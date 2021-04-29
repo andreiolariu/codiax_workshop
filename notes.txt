@@ -1,0 +1,46 @@
+brad - member id 250
+good match - id 47252
+bad match - id 25596219
+
+workshop parts:
+- build dataset part 1
+- build random matches
+- build dataset part 2
+- check performance
+
+slides
+- intro despre mine si companie
+- assumptions, ask questions, stuff like that
+- descrierea clientului, problemei - learning to rank vs classification
+- discutie despre baseline
+- intrat in cod, incarcat date, construit dataset, evaluat baseline
+- discutie despre baseline, improvements
+- prezentat model nou
+- bert
+- construit dataset
+- train model
+- evaluate
+- discussion
+- next steps
+
+
+
+M -> markdown
+B -> insert cell below
+shift+i -> slide
+
+alt+r, then t
+
+
+
+
+<figure style="display: table; margin: 0 auto">
+  <center>
+    <img src="images/acc2.png" width="700vmin" style="padding: 4vmin 0 0 0">
+  </center>
+</figure>
+
+
+calculat baseline performance without random data
+is 30% good or bad?
+if doing pedestrian detection - bad
