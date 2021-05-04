@@ -36,7 +36,7 @@ alt+r, then t
 
 <figure style="display: table; margin: 0 auto">
   <center>
-    <img src="images/acc2.png" width="700vmin" style="padding: 4vmin 0 0 0">
+    <img src="images/bert.png" width="700vmin" style="padding: 4vmin 0 0 0">
   </center>
 </figure>
 
@@ -44,3 +44,6 @@ alt+r, then t
 calculat baseline performance without random data
 is 30% good or bad?
 if doing pedestrian detection - bad
+
+
+add more than 40k tns?
