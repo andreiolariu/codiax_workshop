@@ -61,19 +61,54 @@ with open('encodings.pickle', 'rb') as f:
 
 X = []
 for row in X_matches:
-  m_enc = member_encodings[row['member_id']]
-  r_enc = request_encodings[row['request_id']]
-  # X.append(member_encodings[row['member_id']] * \
-  #     request_encodings[row['request_id']])
+  # m_enc = member_encodings[row['member_id']]
+  # r_enc = request_encodings[row['request_id']]
+  X.append(member_encodings[row['member_id']] * \
+      request_encodings[row['request_id']])
   # X.append(np.abs(member_encodings[row['member_id']] - \
   #     request_encodings[row['request_id']]))
-  X.append(np.hstack((m_enc, r_enc, m_enc * r_enc, np.abs(m_enc - r_enc))))
+  # X.append(np.hstack((m_enc * r_enc, np.abs(m_enc - r_enc))))
+  # X.append(np.hstack((m_enc, r_enc, m_enc * r_enc, np.abs(m_enc - r_enc))))
 
 X = np.array(X)
 
 
 X_train, X_test, y_train, y_test, _, bp_test = \
     train_test_split(X, y, baseline_pred, random_state=42, test_size=1000)
+
+
+
+import xgboost as xgb
+
+dtrain = xgb.DMatrix(X_train, label=y_train)
+dtest = xgb.DMatrix(X_test, label=y_test)
+
+num_boost_round = 100
+early_stopping_rounds=10
+params = {
+    'max_depth':7,
+    'min_child_weight': 7,
+    'eta':.1,
+    'subsample': 1,
+    'colsample_bytree': .8,
+    'eval_metric': 'auc',
+    'objective':'binary:logistic',
+    # #GPU enabled
+    # 'gpu_id': 0,
+    # 'tree_method':'gpu_hist',
+}
+model = xgb.train(
+    params,
+    dtrain,
+    num_boost_round=num_boost_round,
+    evals=[(dtrain,'Train'),(dtest, "Test")],
+    early_stopping_rounds=early_stopping_rounds,
+    verbose_eval = 5
+)
+
+
+
+
 
 model = GradientBoostingClassifier(n_estimators=10, learning_rate=0.1, \
     max_depth=3)
