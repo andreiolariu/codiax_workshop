@@ -26,4 +26,5 @@ Your browser should then open the jupyter notebook interface. In it, click on ex
 
 
 [1] https://codiax.co/
+
 [2] https://rise.readthedocs.io/en/stable/usage.html#running-a-slideshow
