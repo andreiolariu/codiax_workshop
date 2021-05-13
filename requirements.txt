@@ -1,6 +1,8 @@
-scikit-learn==0.20.2
+scikit-learn==0.24.2
 numpy==1.17.4
+xgboost==1.4.1
+jupyter
+
 bert-serving-server==1.9.6
 bert-serving-client==1.9.6
-jupyter
 RISE
